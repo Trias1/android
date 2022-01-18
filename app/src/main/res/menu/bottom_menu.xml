@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/navigation_stream"
+            android:icon="@drawable/ic_stream"
+            android:title="Stream"/>
+        <item
+            android:id="@+id/navigation_announcements"
+            android:icon="@drawable/ic_announcement_svgrepo_com"
+            android:title="Announcements" />
+        <item
+            android:icon="@drawable/ic_assignment_icon"
+            android:id="@+id/navigation_assignments"
+            android:title="Assignments"/>
+    </group>
+</menu>

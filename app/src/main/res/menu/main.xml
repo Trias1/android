@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/new_class"
+        android:orderInCategory="100"
+        android:title="New Class"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/join_class"
+        android:orderInCategory="200"
+        android:title="Join Class"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_logout"
+        android:orderInCategory="400"
+        android:title="@string/logoutHint"
+        app:showAsAction="never" />
+</menu>

@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">M-Learning</string>
+    <string name="emailHint">Email</string>
+    <string name="passwordHint">Password</string>
+    <string name="loginHint">Login</string>
+    <string name="logoutHint">Logout</string>
+    <string name="registerHint">Register</string>
+    <string name="welcomeMessage">Welcome to the M-Learning</string>
+    <string name="redirectRegister">Don\'t have an account?</string>
+    <string name="redirectLogin">Have an account?</string>
+    <string name="signUpMessage">Sign Up to M-Learning</string>
+    <string name="firstNameHint">First Name</string>
+    <string name="lastNameHint">Last Name</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">M-Learning</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <string name="courseSection">Course Section</string>
+    <string name="courseCode">Course Code</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

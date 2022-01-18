@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="New Class"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        app:hintTextColor="#1D45C0"
+        >
+        <EditText
+            android:id="@+id/new_class_class_name"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="Class name"
+            android:theme="@style/EditTextStyle2"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        app:hintTextColor="#1D45C0"
+        >
+        <EditText
+            android:id="@+id/new_class_class_section"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="Class section"
+            android:theme="@style/EditTextStyle2"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        app:hintTextColor="#1D45C0"
+        >
+        <EditText
+            android:id="@+id/new_class_class_subject"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="Class subject"
+            android:theme="@style/EditTextStyle2"
+
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp">
+
+
+        <Button
+            android:id="@+id/new_class_create_button"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Create"
+            />
+
+        <Button
+            android:id="@+id/new_class_cancel_button"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>

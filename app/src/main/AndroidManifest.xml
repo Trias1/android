@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.cengonline">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/learning"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/learning"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/MyMaterialTheme">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.message.SpecialMessageFragment"
+            android:theme="@style/MyMaterialTheme"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity
+            android:name=".ui.course.AssignmentListFragment"
+            android:theme="@style/MyMaterialTheme"></activity>
+        <activity
+            android:name=".ui.course.AssignmentFragment"
+            android:theme="@style/MyMaterialTheme"></activity>
+        <activity
+            android:name=".ui.course.CourseFragment"
+            android:theme="@style/MyMaterialTheme"></activity>
+        <activity
+            android:name=".ui.course.AnnouncementFragment"
+            android:theme="@style/MyMaterialTheme"></activity>
+        <activity
+            android:name=".ui.course.PostFragment"
+            android:theme="@style/MyMaterialTheme"></activity>
+        <activity
+            android:name=".ui.course.CommentFragment"
+            android:theme="@style/MyMaterialTheme"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/MyMaterialTheme"></activity>
+        <activity
+            android:name=".RegisterActivity"
+            android:theme="@style/MyMaterialTheme" />
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/MyMaterialTheme"></activity>
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>

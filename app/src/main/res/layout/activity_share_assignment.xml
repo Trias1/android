@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="New Assignment"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        app:hintTextColor="#1D45C0"
+        >
+        <EditText
+            android:id="@+id/share_assignment_title"
+            android:layout_width="300dp"
+            android:inputType="textMultiLine"
+            android:layout_height="wrap_content"
+            android:hint="Title"
+            android:theme="@style/EditTextStyle2"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        app:hintTextColor="#1D45C0"
+        >
+        <EditText
+            android:id="@+id/share_assignment_description"
+            android:layout_width="300dp"
+            android:inputType="textMultiLine"
+            android:layout_height="wrap_content"
+            android:hint="Description"
+            android:theme="@style/EditTextStyle2"
+
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:gravity="center">
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginRight="20dp"
+            app:hintTextColor="#1D45C0"
+            >
+            <EditText
+                android:id="@+id/share_assignment_due"
+                android:layout_width="140dp"
+                android:clickable="true"
+                android:editable="false"
+                android:layout_height="wrap_content"
+                android:theme="@style/EditTextStyle2"
+                android:hint="Due"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:hintTextColor="#1D45C0"
+            >
+
+            <EditText
+                android:id="@+id/share_assignment_due_time"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:editable="false"
+                android:hint="Time (opt)"
+                android:theme="@style/EditTextStyle2" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp">
+
+
+        <Button
+            android:id="@+id/share_assignment_share_button"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Share"
+            />
+
+        <Button
+            android:id="@+id/share_assignment_cancel_button"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>

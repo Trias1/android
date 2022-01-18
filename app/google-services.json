@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "645535949492",
+    "project_id": "csroooom",
+    "storage_bucket": "csroooom.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:645535949492:android:071ddfbbcada2b4a1eade1",
+        "android_client_info": {
+          "package_name": "com.example.cengonline"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "645535949492-jut65nsr3mj6apjgotht2fvi7kl3qve4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDakIqqobCe2xG0Kka10l6wDhyDKHV-E9I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "645535949492-jut65nsr3mj6apjgotht2fvi7kl3qve4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
