@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.course.PostFragment">
+    tools:context=".ui.course.QuizFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,7 +44,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:text="N"
-                android:id="@+id/post_detail_profil"
+                android:id="@+id/quiz_detail_profil"
                 android:background="@drawable/rounded_textview"
                 android:gravity="center"
                 android:textColor="@android:color/white"
@@ -57,14 +57,14 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/post_detail_user"
+                    android:id="@+id/quiz_detail_user"
                     android:layout_marginLeft="15dp"
                     android:text="Name Surname"
                     android:textColor="#000000" />
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:id="@+id/post_detail_date"
+                    android:id="@+id/quiz_detail_date"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:text="Apr 15"
@@ -81,18 +81,70 @@
             android:background="@color/gray" />
 
         <TextView
-            android:id="@+id/post_detail_body"
+            android:id="@+id/quiz_detail_body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="20dp"
-            android:text="Post"
+            android:text="Quiz"
             android:layout_marginBottom="20dp"
             android:textColor="#000000"
             android:textSize="15sp"
             android:background="@null"/>
     </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/attemptTest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        app:cardCornerRadius="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:id="@+id/course_fragment_course_image"
+            android:src="@drawable/quss"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/course_fragment_course_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="40dp"
+                android:fontFamily="sans-serif"
+                android:text="Quiz"
+                android:lines="1"
+                android:ellipsize="end"
+                android:textColor="@color/white"
+                android:textSize="22sp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="30dp"
+        android:background="#ff5252"
+        android:backgroundTint="#ff5252"
+        android:src="@android:drawable/ic_menu_add"
+        android:visibility="visible" />
 
 
 </LinearLayout>

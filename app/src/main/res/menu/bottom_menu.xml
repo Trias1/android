@@ -15,5 +15,9 @@
             android:icon="@drawable/ic_assignment_icon"
             android:id="@+id/navigation_assignments"
             android:title="Assignments"/>
+        <item
+            android:icon="@drawable/ic_baseline_topic_24"
+            android:id="@+id/navigation_quiz"
+            android:title="Quiz"/>
     </group>
 </menu>

@@ -9,12 +9,14 @@ import com.example.cengonline.model.Course;
 import com.example.cengonline.model.CourseAnnouncements;
 import com.example.cengonline.model.CourseAssignments;
 import com.example.cengonline.model.CoursePosts;
+import com.example.cengonline.model.CourseQuiz;
 import com.example.cengonline.model.Message;
 import com.example.cengonline.model.MyTimestamp;
 import com.example.cengonline.model.User;
 import com.example.cengonline.post.Announcement;
 import com.example.cengonline.post.Assignment;
 import com.example.cengonline.post.Post;
+import com.example.cengonline.post.Quiz;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -484,6 +486,190 @@ public class DatabaseUtility {
                                 courseAnnouncements.getAnnouncements().add(announcement);
                                 courseAnnouncementsRef.child(courseAnnouncements.getKey()).setValue(courseAnnouncements);
                                 callback.onSuccess("You updated announcement successfully!");
+                            }
+                            else{
+                                callback.onFailed("Something went wrong!");
+                            }
+                        }
+                        else{
+                            callback.onFailed("Something went wrong!");
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        callback.onFailed("Something went wrong!");
+                    }
+                });
+            }
+
+            @Override
+            public void onFailed(String message) {
+                callback.onFailed("Something went wrong!");
+            }
+        });
+    }
+
+
+    public void newCourseQuiz(final Course course, final String quizBody, final DatabaseCallback callback){
+
+        final DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("courseQuiz");
+
+        getUser(new DatabaseCallback() {
+            @Override
+            public void onSuccess(Object result) {
+                final User user = (User)result;
+                if(user.getRoles().contains(User.Role.TEACHER) && course.getTeacherList().contains(user.getKey())){
+                    Query query = ref.orderByChild("courseKey").equalTo(course.getKey());
+                    query.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            if(dataSnapshot.exists()){
+                                CourseQuiz quizzes = null;
+                                for(DataSnapshot ds : dataSnapshot.getChildren()){
+                                    quizzes = ds.getValue(CourseQuiz.class);
+                                }
+                                if(quizzes != null && quizzes.getQuiz() != null){
+                                    Quiz quiz = new Quiz(user.getKey(), new MyTimestamp(new Date()), quizBody);
+                                    quizzes.getQuiz().add(quiz);
+                                    ref.child(quizzes.getKey()).setValue(quizzes);
+                                    callback.onSuccess("You have posted an quiz!");
+                                }
+                                else{
+                                    callback.onFailed("An error occurred while posting quiz!");
+                                }
+                            }
+                            else{
+                                DatabaseReference newVal = ref.push();
+                                Quiz quiz = new Quiz(user.getKey(), new MyTimestamp(new Date()), quizBody);
+                                CourseQuiz quizzes = new CourseQuiz(newVal.getKey(), Arrays.asList(quiz), course.getKey());
+                                newVal.setValue(quizzes);
+                                callback.onSuccess("You have posted an quiz!");
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                            callback.onFailed("An error occurred while posting quiz!");
+                        }
+                    });
+                }
+                else{
+                    callback.onFailed("You are not authorized to post quiz!");
+                }
+            }
+
+            @Override
+            public void onFailed(String message) {
+
+            }
+        });
+    }
+
+    public void getCourseQuiz(final Course course, final DatabaseCallback callback){
+
+        DatabaseReference quizRef = FirebaseDatabase.getInstance().getReference().child("courseQuiz");
+        Query query = quizRef.orderByChild("courseKey").equalTo(course.getKey());
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                CourseQuiz ca = null;
+                for(DataSnapshot ds : dataSnapshot.getChildren()){
+                    ca = ds.getValue(CourseQuiz.class);
+                }
+                if(ca != null && ca.getQuiz() != null){
+                    callback.onSuccess(ca);
+                }
+                else{
+                    callback.onSuccess("Quiz empty");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                callback.onFailed("Error!");
+            }
+        });
+    }
+
+    public void deleteCourseQuiz(final Course course, final Quiz quiz, final DatabaseCallback callback){
+
+        getUser(new DatabaseCallback() {
+            @Override
+            public void onSuccess(Object result) {
+                final User user = (User)result;
+                final DatabaseReference courseQuizRef = FirebaseDatabase.getInstance().getReference().child("courseQuiz");
+                Query query = courseQuizRef.orderByChild("courseKey").equalTo(course.getKey());
+                query.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if(dataSnapshot.exists()){
+                            CourseQuiz courseQuiz = null;
+                            for(DataSnapshot ds : dataSnapshot.getChildren()){
+                                courseQuiz = ds.getValue(CourseQuiz.class);
+                            }
+                            if(courseQuiz != null && courseQuiz.getQuiz() != null){
+                                courseQuiz.getQuiz().remove(quiz);
+                                if(courseQuiz.getQuiz().isEmpty()){
+                                    courseQuizRef.child(courseQuiz.getKey()).removeValue(new DatabaseReference.CompletionListener() {
+                                        @Override
+                                        public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+                                            callback.onSuccess("You deleted quiz successfully!");
+                                        }
+                                    });
+                                }
+                                else{
+                                    courseQuizRef.child(courseQuiz.getKey()).setValue(courseQuiz);
+                                    callback.onSuccess("You deleted Quiz successfully!");
+                                }
+                            }
+                            else{
+                                callback.onFailed("Something went wrong!");
+                            }
+                        }
+                        else{
+                            callback.onFailed("Something went wrong!");
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        callback.onFailed("Something went wrong!");
+                    }
+                });
+            }
+
+            @Override
+            public void onFailed(String message) {
+                callback.onFailed("Something went wrong!");
+            }
+        });
+    }
+
+    public void updateCourseQuiz(final Course course, final Quiz quizzes, final String newBody, final DatabaseCallback callback){
+
+        getUser(new DatabaseCallback() {
+            @Override
+            public void onSuccess(Object result) {
+                final User user = (User)result;
+                final DatabaseReference courseQuizRef = FirebaseDatabase.getInstance().getReference().child("courseQuiz");
+                Query query = courseQuizRef.orderByChild("courseKey").equalTo(course.getKey());
+                query.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if(dataSnapshot.exists()){
+                            CourseQuiz courseQuiz = null;
+                            for(DataSnapshot ds : dataSnapshot.getChildren()){
+                                courseQuiz = ds.getValue(CourseQuiz.class);
+                            }
+                            if(courseQuiz != null && courseQuiz.getQuiz() != null){
+                                courseQuiz.getQuiz().remove(quizzes);
+                                quizzes.setBody(newBody);
+                                quizzes.setEditedBy(user.getKey());
+                                quizzes.setEditedAt(new MyTimestamp(new Date()));
+                                courseQuiz.getQuiz().add(quizzes);
+                                courseQuizRef.child(courseQuiz.getKey()).setValue(courseQuiz);
+                                callback.onSuccess("You updated quiz successfully!");
                             }
                             else{
                                 callback.onFailed("Something went wrong!");

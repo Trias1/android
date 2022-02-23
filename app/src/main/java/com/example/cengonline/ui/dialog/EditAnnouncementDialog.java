@@ -15,6 +15,7 @@ import com.example.cengonline.DatabaseUtility;
 import com.example.cengonline.R;
 import com.example.cengonline.model.Course;
 import com.example.cengonline.post.Announcement;
+import com.example.cengonline.post.BaganCourse;
 
 public class EditAnnouncementDialog extends Dialog implements View.OnClickListener {
 

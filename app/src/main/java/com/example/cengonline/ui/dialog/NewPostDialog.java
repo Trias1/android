@@ -14,6 +14,7 @@ import com.example.cengonline.DatabaseCallback;
 import com.example.cengonline.DatabaseUtility;
 import com.example.cengonline.R;
 import com.example.cengonline.model.Course;
+import com.example.cengonline.ui.course.BaganCourseTemplate;
 
 public class NewPostDialog extends Dialog implements View.OnClickListener {
 
@@ -30,6 +31,7 @@ public class NewPostDialog extends Dialog implements View.OnClickListener {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_share_post);
     }
+
 
     @Override
     public void onCreate(Bundle savedStateInstance) {

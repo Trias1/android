@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="New Announcement"
+        android:text="New Quiz"
         android:textSize="30dp"
         android:textStyle="bold" />
 
@@ -24,7 +24,7 @@
         app:hintTextColor="#1D45C0"
         >
         <EditText
-            android:id="@+id/share_announcement_text"
+            android:id="@+id/share_quiz_text"
             android:layout_width="300dp"
             android:inputType="textMultiLine"
             android:layout_height="wrap_content"
@@ -44,14 +44,14 @@
 
 
         <Button
-            android:id="@+id/share_announcement_share_button"
+            android:id="@+id/share_quiz_share_button"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="Share"
             />
 
         <Button
-            android:id="@+id/share_announcement_cancel_button"
+            android:id="@+id/share_quiz_cancel_button"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="Cancel"

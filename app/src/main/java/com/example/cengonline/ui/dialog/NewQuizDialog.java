@@ -16,11 +16,11 @@ import com.example.cengonline.R;
 import com.example.cengonline.model.Course;
 import com.example.cengonline.ui.course.BaganCourseTemplate;
 
-public class NewAnnouncementDialog extends Dialog implements View.OnClickListener {
+public class NewQuizDialog extends Dialog implements View.OnClickListener {
 
     private Button cancelButton;
     private Button shareButton;
-    private EditText announcementEditText;
+    private EditText quizEditText;
     private Activity activity;
     private Course course;
 
@@ -31,12 +31,12 @@ public class NewAnnouncementDialog extends Dialog implements View.OnClickListene
 //
 //    }
 
-    public NewAnnouncementDialog(Activity activity, Course course) {
+    public NewQuizDialog(Activity activity, Course course) {
         super(activity);
         this.activity = activity;
         this.course = course;
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_share_announcement);
+        setContentView(R.layout.activity_new_quiz_dialog);
     }
 
 
@@ -44,9 +44,9 @@ public class NewAnnouncementDialog extends Dialog implements View.OnClickListene
     public void onCreate(Bundle savedStateInstance) {
         this.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-        this.shareButton = (Button)findViewById(R.id.share_announcement_share_button);
-        this.cancelButton = (Button)findViewById(R.id.share_announcement_cancel_button);
-        this.announcementEditText = (EditText)findViewById(R.id.share_announcement_text);
+        this.shareButton = (Button)findViewById(R.id.share_quiz_share_button);
+        this.cancelButton = (Button)findViewById(R.id.share_quiz_cancel_button);
+        this.quizEditText = (EditText)findViewById(R.id.share_quiz_text);
 
         this.shareButton.setOnClickListener(this);
         this.cancelButton.setOnClickListener(this);
@@ -55,15 +55,15 @@ public class NewAnnouncementDialog extends Dialog implements View.OnClickListene
     @Override
     public void onClick(View v) {
         switch(v.getId()){
-            case R.id.share_announcement_share_button: this.shareButton.setEnabled(false); postAnnouncement(); break;
-            case R.id.share_announcement_cancel_button: dismiss(); break;
+            case R.id.share_quiz_share_button: this.shareButton.setEnabled(false); postQuiz(); break;
+            case R.id.share_quiz_cancel_button: dismiss(); break;
             default: break;
         }
     }
 
-    private void postAnnouncement(){
+    private void postQuiz(){
 
-        DatabaseUtility.getInstance().newCourseAnnouncement(this.course, this.announcementEditText.getText().toString(), new DatabaseCallback() {
+        DatabaseUtility.getInstance().newCourseQuiz(this.course, this.quizEditText.getText().toString(), new DatabaseCallback() {
             @Override
             public void onSuccess(Object result) {
                 String msg = (String) result;
@@ -74,7 +74,7 @@ public class NewAnnouncementDialog extends Dialog implements View.OnClickListene
             @Override
             public void onFailed(String message) {
                 makeToastMessage(message);
-                announcementEditText.setText("");
+                quizEditText.setText("");
                 shareButton.setEnabled(true);
             }
         });
